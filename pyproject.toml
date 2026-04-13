@@ -1,0 +1,46 @@
+[project]
+name = "soldy"
+version = "0.1.0"
+description = "Minimal append-only dialogue logger."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+authors = [
+    { name = "nphard001", email = "nphard001@gmail.com" }
+]
+keywords = ["sold", "logging", "append-only", "dialogue"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+dependencies = [
+    "anyio>=4.0",
+    "diskcache>=5.6",
+    "click>=8.1",
+    "psutil>=5.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/nphard001/soldy"
+Repository = "https://github.com/nphard001/soldy"
+Issues = "https://github.com/nphard001/soldy/issues"
+
+[project.scripts]
+soldy = "soldy.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.11.2,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+]

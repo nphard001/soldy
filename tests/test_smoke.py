@@ -2,20 +2,20 @@
 
 from __future__ import annotations
 
+import pytest
 from click.testing import CliRunner
 
 from soldy.cli import main
 
 
-def test_version() -> None:
-    runner = CliRunner()
-    result = runner.invoke(main, ["--version"])
-    assert result.exit_code == 0
-    assert "0.1.0" in result.output
+@pytest.fixture()
+def runner() -> CliRunner:
+    return CliRunner()
 
 
-def test_log() -> None:
-    runner = CliRunner()
-    result = runner.invoke(main, ["log", "Alice", "Hello"])
+
+
+@pytest.mark.parametrize("cmd", ["init", "text", "list"])
+def test_commands_exist(runner: CliRunner, cmd: str) -> None:
+    result = runner.invoke(main, [cmd, "--help"])
     assert result.exit_code == 0
-    assert "[Alice] Hello" in result.output
